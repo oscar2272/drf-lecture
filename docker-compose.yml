@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: . # 현재 디렉토리의 dockerfile을 사용
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app # 현재 디렉토리의 app 디렉토리를 컨테이너 내의 /app 디렉토리에 연결
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
